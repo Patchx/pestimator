@@ -10,9 +10,22 @@
       <div class="doc">
         <div class="title">Create New Project</div>
         
-        <p>Name here</p>
+        <p class="mt-20">Name</p>
 
-        <div class="mt-20">
+        <input
+          class="full-width"
+          v-model="projectName"
+        />
+
+        <p class="mt-20">Description</p>
+
+        <textarea
+          class="full-width"
+          rows="5"
+          v-model="projectDescription"
+        ></textarea>
+
+        <div class="mt-30">
           <button 
             @click="goBack" 
             class="alt mb-10 mr-10"
@@ -36,21 +49,19 @@
     },
     data () {
       return {
+        projectDescription: '',
+        projectName: ''
       }
     },
     computed: {
     },
     methods: {
       createProject () {
-        // Just an example of how to save project info to VueX
-        // this.$store.dispatch('changeProject', {
-        //   name: 'test project 1'
-        // })
-        // console.log(this.$store.state.CurrentProject.main)
-
-        // Just an example on how to increment a counter in VueX
-        // this.$store.dispatch('incrementCounter')
-        // console.log(this.$store.state.Counter.main)
+        this.$store.dispatch('changeProject', {
+          description: this.projectDescription,
+          name: this.projectName
+        })
+        console.log(this.$store.state.CurrentProject.main)
       },
       goBack () {
         window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')

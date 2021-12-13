@@ -21,12 +21,26 @@
 
   body { font-family: 'Source Sans Pro', sans-serif; }
 
+  input {
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+
   main {
     display: flex;
     justify-content: center;
   }
 
   main > div { flex-basis: 82%; }
+
+  textarea {
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px 10px;
+  }
 
   #logo {
     height: auto;
@@ -68,6 +82,10 @@
   .doc p {
     color: black;
     margin-bottom: 10px;
+  }
+
+  .full-width {
+    width: 100%;
   }
 
   .left-side {

@@ -98,16 +98,6 @@
 
       toggleTimer () {
         this.timerOn = !this.timerOn
-
-        // Just an example of how to save project info to VueX
-        // this.$store.dispatch('changeProject', {
-        //   name: 'test project 1'
-        // })
-        // console.log(this.$store.state.CurrentProject.main)
-
-        // Just an example on how to increment a counter in VueX
-        // this.$store.dispatch('incrementCounter')
-        // console.log(this.$store.state.Counter.main)
       }
     }
   }
