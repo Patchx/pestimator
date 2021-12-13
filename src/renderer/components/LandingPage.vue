@@ -66,6 +66,9 @@
 
       toggleTimer () {
         this.timerOn = !this.timerOn
+
+        this.$store.dispatch('incrementCounter')
+        console.log(this.$store.state.Counter.main)
       }
     }
   }

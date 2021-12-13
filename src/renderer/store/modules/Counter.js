@@ -12,8 +12,8 @@ const mutations = {
 }
 
 const actions = {
-  someAsyncTask ({ commit }) {
-    // do something async
+  incrementCounter ({ commit }) {
+    // Can do something async here
     commit('INCREMENT_MAIN_COUNTER')
   }
 }
