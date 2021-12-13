@@ -14,10 +14,10 @@
 
         <div style="margin-top: 20px;">
           <button 
-            class="alt"
+            :class="timerBtnClass"
             style="margin-right: 10px;"
-            @click="open('https://electron.atom.io/docs/')"
-          >Stop Timer</button>
+            @click="toggleTimer"
+          >{{timerBtnText}}</button>
         
           <button 
             @click="open('https://vuejs.org/v2/guide/')"
@@ -38,9 +38,34 @@
   export default {
     name: 'landing-page',
     components: { SystemInformation },
+    data () {
+      return {
+        timerOn: false
+      }
+    },
+    computed: {
+      timerBtnClass () {
+        if (this.timerOn) {
+          return 'alt'
+        } else {
+          return ''
+        }
+      },
+      timerBtnText () {
+        if (this.timerOn) {
+          return 'Stop Timer'
+        } else {
+          return 'Start Timer'
+        }
+      }
+    },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
+      },
+
+      toggleTimer () {
+        this.timerOn = !this.timerOn
       }
     }
   }
