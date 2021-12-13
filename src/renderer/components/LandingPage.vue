@@ -3,29 +3,48 @@
     <img 
       id="logo" 
       src="~@/assets/logo.png" 
-      alt="electron-vue"
+      alt="Pestimator-logo"
     />
     
     <main>
       <div class="doc">
-        <div class="title">Current Project</div>
-        
-        <p>Name here</p>
+        <div
+          v-if="!haveCurrentProject"
+        >
+          <p>Pestimator helps you make better time estimates, by comparing future tasks to old projects.</p>
 
-        <div style="margin-top: 20px;">
-          <button 
-            @click="toggleTimer"
-            :class="timerBtnClass"
-            style="margin-right: 10px; margin-bottom: 10px;"
-          >{{timerBtnText}}</button>
-        
-          <button 
-            @click="open('https://vuejs.org/v2/guide/')"
-            style="margin-bottom: 10px;"
-          >Manage Projects</button>
+          <p>Please click 'Create New Project' to get started.</p>
+
+          <br>
+
+          <router-link 
+            to="/new-project"
+            tag="button"
+            class="mb-10"
+          >Create New Project</router-link>
         </div>
 
-        <div style="margin-top: 30px;">
+        <div
+          v-else
+        >
+          <div class="title">Current Project</div>
+          
+          <p>Name here</p>
+
+          <div class="mt-20">
+            <button 
+              @click="toggleTimer"
+              :class="timerBtnClass"
+            >{{timerBtnText}}</button>
+          
+            <button 
+              @click="open('https://vuejs.org/v2/guide/')"
+              class="mb-10"
+            >Manage Projects</button>
+          </div>
+        </div>
+
+        <div class="mt-30">
           <system-information></system-information>
         </div>
       </div>
@@ -45,12 +64,17 @@
       }
     },
     computed: {
+      haveCurrentProject () {
+        return this.$store.state.CurrentProject.main.name !== undefined
+      },
       timerBtnClass () {
+        var classes = 'mb-10 mr-10'
+
         if (this.timerOn) {
-          return 'alt'
-        } else {
-          return ''
+          classes += ' alt'
         }
+
+        return classes
       },
       timerBtnText () {
         if (this.timerOn) {
@@ -68,11 +92,11 @@
       toggleTimer () {
         this.timerOn = !this.timerOn
 
-        this.$store.dispatch('changeProject', {
-          name: 'test project 1'
-        })
-
-        console.log(this.$store.state.CurrentProject.main)
+        // Just an example of how to save project info to VueX
+        // this.$store.dispatch('changeProject', {
+        //   name: 'test project 1'
+        // })
+        // console.log(this.$store.state.CurrentProject.main)
 
         // Just an example on how to increment a counter in VueX
         // this.$store.dispatch('incrementCounter')
@@ -83,85 +107,4 @@
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body { font-family: 'Source Sans Pro', sans-serif; }
-
-  #wrapper {
-    background:
-      radial-gradient(
-        ellipse at top left,
-        rgba(255, 255, 255, 1) 40%,
-        rgba(229, 229, 229, .9) 100%
-      );
-    height: 100vh;
-    padding: 60px 80px;
-    width: 100vw;
-  }
-
-  #logo {
-    height: auto;
-    margin-bottom: 20px;
-    width: 380px;
-  }
-
-  main {
-    display: flex;
-    justify-content: center;
-  }
-
-  main > div { flex-basis: 82%; }
-
-  .left-side {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .welcome {
-    color: #555;
-    font-size: 23px;
-    margin-bottom: 10px;
-  }
-
-  .title {
-    color: #2c3e50;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 6px;
-  }
-
-  .title.alt {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .doc p {
-    color: black;
-    margin-bottom: 10px;
-  }
-
-  .doc button {
-    font-size: .8em;
-    cursor: pointer;
-    outline: none;
-    padding: 0.75em 2em;
-    border-radius: 2em;
-    display: inline-block;
-    color: #fff;
-    background-color: #4fc08d;
-    transition: all 0.15s ease;
-    box-sizing: border-box;
-    border: 1px solid #4fc08d;
-  }
-
-  .doc button.alt {
-    color: #42b983;
-    background-color: transparent;
-  }
 </style>
