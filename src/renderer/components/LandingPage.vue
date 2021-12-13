@@ -67,8 +67,9 @@
       toggleTimer () {
         this.timerOn = !this.timerOn
 
-        this.$store.dispatch('incrementCounter')
-        console.log(this.$store.state.Counter.main)
+        // Just an example on how to increment a counter in VueX
+        // this.$store.dispatch('incrementCounter')
+        // console.log(this.$store.state.Counter.main)
       }
     }
   }
