@@ -14,10 +14,17 @@
 
         <div class="mt-20">
           <router-link 
+            custom
             to="/"
-            tag="button"
-            class="alt mb-10 mr-10"
-          >Cancel</router-link>
+            v-slot="{ navigate }"
+          >
+            <button 
+              @click="navigate" 
+              @keypress.enter="navigate" 
+              class="alt mb-10 mr-10"
+              role="link"
+            >Cancel</button>
+          </router-link>
 
           <button 
             @click="createProject"

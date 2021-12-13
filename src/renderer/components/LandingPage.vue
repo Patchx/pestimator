@@ -18,10 +18,17 @@
           <br>
 
           <router-link 
-            to="/new-project"
-            tag="button"
             class="mb-10"
-          >Create New Project</router-link>
+            custom 
+            to="/new-project"
+            v-slot="{ navigate }"
+          >
+            <button 
+              @click="navigate" 
+              @keypress.enter="navigate" 
+              role="link"
+            >Create New Project</button>
+          </router-link>
         </div>
 
         <div
