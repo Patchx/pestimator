@@ -75,6 +75,7 @@
 
 <script>
   import SystemInformation from './LandingPage/SystemInformation'
+  import TimeHelpers from '../../main/TimeHelpers'
 
   export default {
     name: 'landing-page',
@@ -111,7 +112,7 @@
           return '0s'
         }
 
-        return time + 's'
+        return TimeHelpers.formattedTimeSpent(time)
       }
     },
     methods: {
