@@ -1,31 +1,28 @@
 <template>
   <div id="wrapper">
-    <img 
-      id="logo" 
-      src="~@/assets/logo.png" 
-      alt="electron-vue"
-    />
-    
+    <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
     <main>
-      <div class="doc">
-        <div class="title">Current Project</div>
-        
-        <p>Name here</p>
+      <div class="left-side">
+        <span class="title">
+          Welcome to your new project!
+        </span>
+        <system-information></system-information>
+      </div>
 
-        <div style="margin-top: 20px;">
-          <button 
-            class="alt"
-            style="margin-right: 10px;"
-            @click="open('https://electron.atom.io/docs/')"
-          >Stop Timer</button>
-        
-          <button 
-            @click="open('https://vuejs.org/v2/guide/')"
-          >Manage Projects</button>
+      <div class="right-side">
+        <div class="doc">
+          <div class="title">Getting Started</div>
+          <p>
+            electron-vue comes packed with detailed documentation that covers everything from
+            internal configurations, using the project structure, building your application,
+            and so much more.
+          </p>
+          <button @click="open('https://simulatedgreg.gitbooks.io/electron-vue/content/')">Read the Docs</button><br><br>
         </div>
-
-        <div style="margin-top: 40px;">
-          <system-information></system-information>
+        <div class="doc">
+          <div class="title alt">Other Documentation</div>
+          <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
+          <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button>
         </div>
       </div>
     </main>
@@ -72,15 +69,15 @@
   #logo {
     height: auto;
     margin-bottom: 20px;
-    width: 380px;
+    width: 420px;
   }
 
   main {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
   }
 
-  main > div { flex-basis: 82%; }
+  main > div { flex-basis: 50%; }
 
   .left-side {
     display: flex;
