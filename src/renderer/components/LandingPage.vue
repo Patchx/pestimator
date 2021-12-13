@@ -36,7 +36,14 @@
         >
           <div class="title">{{$store.state.CurrentProject.main.name}}</div>
           
-          <p>{{$store.state.CurrentProject.main.description}}</p>
+          <p>
+            <pre 
+              style="
+                font-family: inherit;
+                line-height: 15px;
+              "
+            >{{$store.state.CurrentProject.main.description}}</pre>
+          </p>
 
           <p>Time spent: <b>{{timeSpent}}</b></p>
 

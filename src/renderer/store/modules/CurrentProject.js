@@ -1,5 +1,9 @@
 const state = {
-  main: {}
+  main: {
+    name: undefined,
+    description: undefined,
+    timeSpent: 0
+  }
 }
 
 const mutations = {

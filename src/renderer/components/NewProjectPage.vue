@@ -59,7 +59,8 @@
       createProject () {
         this.$store.dispatch('createProject', {
           description: this.projectDescription,
-          name: this.projectName
+          name: this.projectName,
+          timeSpent: 0
         })
         this.$router.push('/')
       },
