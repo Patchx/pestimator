@@ -14,17 +14,18 @@
 
         <div style="margin-top: 20px;">
           <button 
-            :class="timerBtnClass"
-            style="margin-right: 10px;"
             @click="toggleTimer"
+            :class="timerBtnClass"
+            style="margin-right: 10px; margin-bottom: 10px;"
           >{{timerBtnText}}</button>
         
           <button 
             @click="open('https://vuejs.org/v2/guide/')"
+            style="margin-bottom: 10px;"
           >Manage Projects</button>
         </div>
 
-        <div style="margin-top: 40px;">
+        <div style="margin-top: 30px;">
           <system-information></system-information>
         </div>
       </div>
@@ -66,6 +67,12 @@
 
       toggleTimer () {
         this.timerOn = !this.timerOn
+
+        this.$store.dispatch('changeProject', {
+          name: 'test project 1'
+        })
+
+        console.log(this.$store.state.CurrentProject.main)
 
         // Just an example on how to increment a counter in VueX
         // this.$store.dispatch('incrementCounter')
