@@ -13,18 +13,11 @@
         <p>Name here</p>
 
         <div class="mt-20">
-          <router-link 
-            custom
-            to="/"
-            v-slot="{ navigate }"
-          >
-            <button 
-              @click="navigate" 
-              @keypress.enter="navigate" 
-              class="alt mb-10 mr-10"
-              role="link"
-            >Cancel</button>
-          </router-link>
+          <button 
+            @click="goBack" 
+            class="alt mb-10 mr-10"
+            role="link"
+          >Cancel</button>
 
           <button 
             @click="createProject"
@@ -58,6 +51,9 @@
         // Just an example on how to increment a counter in VueX
         // this.$store.dispatch('incrementCounter')
         // console.log(this.$store.state.Counter.main)
+      },
+      goBack () {
+        window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
       }
     }
   }
