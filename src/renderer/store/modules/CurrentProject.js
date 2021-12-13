@@ -3,15 +3,25 @@ const state = {
 }
 
 const mutations = {
-  CHANGE_PROJECT (state, projectData) {
+  CREATE_PROJECT (state, projectData) {
     state.main = projectData
+  },
+  INCREMENT_TIME_SPENT (state) {
+    if (state.main.timeSpent === undefined) {
+      state.main.timeSpent = 0
+    } else {
+      state.main.timeSpent++
+    }
   }
 }
 
 const actions = {
-  changeProject ({ commit }, projectData) {
+  createProject ({ commit }, projectData) {
     // Can do something async here
-    commit('CHANGE_PROJECT', projectData)
+    commit('CREATE_PROJECT', projectData)
+  },
+  incrementTimeSpent ({ commit }) {
+    commit('INCREMENT_TIME_SPENT')
   }
 }
 

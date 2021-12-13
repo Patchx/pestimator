@@ -34,15 +34,22 @@
         <div
           v-else
         >
-          <div class="title">Current Project</div>
+          <div class="title">{{$store.state.CurrentProject.main.name}}</div>
           
-          <p>Name here</p>
+          <p>{{$store.state.CurrentProject.main.description}}</p>
+
+          <p>Time spent: <b>{{timeSpent}}</b></p>
 
           <div class="mt-20">
             <button 
               @click="toggleTimer"
               :class="timerBtnClass"
             >{{timerBtnText}}</button>
+
+            <button 
+              @click="open('https://vuejs.org/v2/guide/')"
+              class="mb-10 mr-10"
+            >Adjust Time Manually</button>
           
             <button 
               @click="open('https://vuejs.org/v2/guide/')"
@@ -89,6 +96,15 @@
         } else {
           return 'Start Timer'
         }
+      },
+      timeSpent () {
+        const time = this.$store.state.CurrentProject.main.timeSpent
+
+        if (!time) {
+          return '0s'
+        }
+
+        return time + 's'
       }
     },
     methods: {
@@ -96,8 +112,27 @@
         this.$electron.shell.openExternal(link)
       },
 
+      resumeTimer () {
+        const timerId = setInterval(() => {
+          this.$store.dispatch('incrementTimeSpent')
+        }, 1000)
+
+        this.$store.dispatch('setTimerId', timerId)
+      },
+
+      stopTimer () {
+        clearInterval(this.$store.state.TimerId.main)
+        this.$store.dispatch('setTimerId', null)
+      },
+
       toggleTimer () {
         this.timerOn = !this.timerOn
+
+        if (this.timerOn) {
+          this.resumeTimer()
+        } else {
+          this.stopTimer()
+        }
       }
     }
   }
