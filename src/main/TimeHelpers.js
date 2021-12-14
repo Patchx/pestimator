@@ -1,19 +1,36 @@
+// ---------------------
+// - Private Functions -
+// ---------------------
+
+// Eventually we'll need to factor in more types of pluralization
+// --
+function pluralizeIfNecessary (value, label) {
+  if (value < 2) {
+    return label
+  }
+
+  return label + 's'
+}
+
 export default {
   formattedTimeSpent (seconds) {
-    if (seconds < 60) {
-      return seconds + 's'
-    }
-
-    const minutes = Math.floor(seconds / 60)
-    const leftoverSeconds = seconds % 60
+    var hourLabel = ''
     var minuteLabel = ''
 
-    if (minutes > 1) {
-      minuteLabel = 'mins '
-    } else {
-      minuteLabel = 'min '
+    if (seconds > 3599) {
+      const hours = Math.floor(seconds % 216000 / 3600)
+      hourLabel = pluralizeIfNecessary(hours, 'hour')
+      hourLabel = hours + hourLabel + ' '
     }
 
-    return minutes + minuteLabel + leftoverSeconds + 's'
+    if (seconds > 59) {
+      const minutes = Math.floor(seconds % 3600 / 60)
+      minuteLabel = pluralizeIfNecessary(minutes, 'min')
+      minuteLabel = minutes + minuteLabel + ' '
+    }
+
+    const leftoverSeconds = seconds % 60
+
+    return hourLabel + minuteLabel + leftoverSeconds + 's'
   }
 }

@@ -56,12 +56,17 @@
             <button 
               @click="open('https://vuejs.org/v2/guide/')"
               class="mb-10 mr-10"
-            >Adjust Time Manually</button>
+            >Adjust Time</button>
+
+            <button 
+              @click="open('https://vuejs.org/v2/guide/')"
+              class="mb-10"
+            >Mark Complete</button>
           
             <button 
               @click="open('https://vuejs.org/v2/guide/')"
               class="mb-10"
-            >Manage Projects</button>
+            >Switch Projects</button>
           </div>
         </div>
 
