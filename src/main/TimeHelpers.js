@@ -4,7 +4,7 @@
 
 // Eventually we'll need to factor in more types of pluralization
 // --
-function pluralizeIfNecessary (value, label) {
+function pluralizeIfNecessary (label, value) {
   if (value < 2) {
     return label
   }
@@ -19,13 +19,13 @@ export default {
 
     if (seconds > 3599) {
       const hours = Math.floor(seconds % 216000 / 3600)
-      hourLabel = pluralizeIfNecessary(hours, 'hour')
+      hourLabel = pluralizeIfNecessary('hour', hours)
       hourLabel = hours + hourLabel + ' '
     }
 
     if (seconds > 59) {
       const minutes = Math.floor(seconds % 3600 / 60)
-      minuteLabel = pluralizeIfNecessary(minutes, 'min')
+      minuteLabel = pluralizeIfNecessary('min', minutes)
       minuteLabel = minutes + minuteLabel + ' '
     }
 
