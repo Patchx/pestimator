@@ -88,6 +88,10 @@
     width: 100%;
   }
 
+  .inline-block {
+    display: inline-block;
+  }
+
   .left-side {
     display: flex;
     flex-direction: column;

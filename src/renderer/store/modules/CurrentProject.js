@@ -7,6 +7,9 @@ const state = {
 }
 
 const mutations = {
+  ADJUST_TIME_SPENT (state, seconds) {
+    state.main.timeSpent = seconds
+  },
   CREATE_PROJECT (state, projectData) {
     state.main = projectData
   },
@@ -20,6 +23,9 @@ const mutations = {
 }
 
 const actions = {
+  adjustTimeSpent ({ commit }, seconds) {
+    commit('ADJUST_TIME_SPENT', seconds)
+  },
   createProject ({ commit }, projectData) {
     // Can do something async here
     commit('CREATE_PROJECT', projectData)

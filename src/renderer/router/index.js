@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/components/LandingPage').default
     },
     {
+      path: '/adjust-time',
+      name: 'adjust-time-page',
+      component: require('@/components/AdjustTimePage').default
+    },
+    {
       path: '/new-project',
       name: 'new-project-page',
       component: require('@/components/NewProjectPage').default

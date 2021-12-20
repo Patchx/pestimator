@@ -53,10 +53,18 @@
               :class="timerBtnClass"
             >{{timerBtnText}}</button>
 
-            <button 
-              @click="open('https://vuejs.org/v2/guide/')"
-              class="mb-10 mr-10"
-            >Adjust Time</button>
+            <router-link 
+              class="mb-10"
+              custom 
+              to="/adjust-time"
+              v-slot="{ navigate }"
+            >
+              <button 
+                @click="navigate" 
+                @keypress.enter="navigate" 
+                role="link"
+              >Adjust Time</button>
+            </router-link>
 
             <button 
               @click="open('https://vuejs.org/v2/guide/')"
